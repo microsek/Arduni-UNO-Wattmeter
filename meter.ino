@@ -29,9 +29,10 @@ void loop()
   emon1.calcVI(30,2000);         // Calculate all. No.of half wavelengths (crossings), time-out
   float voltage   = emon1.Vrms;             //extract Vrms into Variable
   float current   = emon1.Irms;             //extract Irms into Variable
+  float powerfactor   = emon1.powerFactor;             //extract powerfacter into Variable
   if (current>0.07)
   {
-    power=(voltage*current)/1000;
+    power=(voltage*current*powerfactor)/1000;
     unitValue=power*0.000278;
     totalunitValue+=unitValue;
   }
